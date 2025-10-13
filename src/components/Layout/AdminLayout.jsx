@@ -14,6 +14,15 @@ const AdminLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
+  const menuItems = [
+    { path: '/dashboard', label: 'Dashboard', icon: dashboard },
+    { path: '/branches', label: 'Branches', icon: dashboard },
+    { path: '/staff', label: 'Staffs', icon: dashboard },
+    { path: '/staff/payment', label: 'Staff Payment', icon: dashboard },
+    { path: '/billing', label: 'Subscription & Billing', icon: dashboard },
+    { path: '/settings', label: 'Settings', icon: dashboard }
+  ];
+
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
@@ -29,7 +38,7 @@ const AdminLayout = ({ children }) => {
     };
   }, []);
   return (
-    <div className="flex h-screen p-0 md:p-5">
+    <div className="flex h-screen p-0 ">
       {/* Mobile Overlay */}
       {isMobile && sidebarOpen && (
         <div
@@ -48,7 +57,7 @@ const AdminLayout = ({ children }) => {
         </button>
       )}
 
-      <nav className={`${sidebarOpen ? (isMobile ? 'w-full' : 'w-[300px]') : 'w-0'} bg-[#187A85] h-full md:rounded-2xl text-white transition-all duration-300 ease-in-out overflow-hidden ${isMobile ? 'fixed top-0 left-0 z-50 h-screen' : ''
+      <nav className={`${sidebarOpen ? (isMobile ? 'w-full' : 'w-[300px]') : 'w-0'} bg-[#187A85] h-full  text-white transition-all duration-300 ease-in-out overflow-hidden ${isMobile ? 'fixed top-0 left-0 z-50 h-screen' : ''
         }`}>
         <div className='flex p-7 gap-3 justify-between items-center'>
           <div className='flex gap-3 items-center'>
@@ -66,16 +75,26 @@ const AdminLayout = ({ children }) => {
           )}
         </div>
         <ul className="list-none pr-5 space-y-4">
-          <li><Link to="/dashboard" onClick={() => isMobile && setSidebarOpen(false)} className={`text-md pl-7 p-3 hover:bg-[#129bd3] flex gap-5 rounded transition-all duration-300 ease-in-out ${location.pathname === '/dashboard' || location.pathname === '/' ? 'bg-[#129bd3]' : ''}`}><img src={dashboard} alt="" /> Dashboard</Link></li>
-          <li><Link to="/branches" onClick={() => isMobile && setSidebarOpen(false)} className={`text-md pl-7 p-3 hover:bg-[#129bd3] flex gap-5 rounded transition-all duration-300 ease-in-out ${location.pathname === '/branches' ? 'bg-[#129bd3]' : ''}`}><img src={dashboard} alt="" />Branches</Link></li>
-          <li><Link to="/staff" onClick={() => isMobile && setSidebarOpen(false)} className={`text-md pl-7 p-3 hover:bg-[#129bd3] flex gap-5 rounded transition-all duration-300 ease-in-out ${location.pathname === '/staff' ? 'bg-[#129bd3]' : ''}`}><img src={dashboard} alt="" />Staffs</Link></li>
-          <li><Link to="/staff/payment" onClick={() => isMobile && setSidebarOpen(false)} className={`text-md pl-7 p-3 hover:bg-[#129bd3] flex gap-5 rounded transition-all duration-300 ease-in-out ${location.pathname === '/staff/payment' ? 'bg-[#129bd3]' : ''}`}><img src={dashboard} alt="" />Staff Payment</Link></li>
-          <li><Link to="/billing" onClick={() => isMobile && setSidebarOpen(false)} className={`text-md pl-7 p-3 hover:bg-[#129bd3] flex gap-5 rounded transition-all duration-300 ease-in-out ${location.pathname === '/billing' ? 'bg-[#129bd3]' : ''}`}><img src={dashboard} alt="" />Subcription & Billing</Link></li>
-          <li><Link to="/settings" onClick={() => isMobile && setSidebarOpen(false)} className={`text-md pl-7 p-3 hover:bg-[#129bd3] flex gap-5 rounded transition-all duration-300 ease-in-out ${location.pathname === '/settings' ? 'bg-[#129bd3]' : ''}`}><img src={dashboard} alt="" />settings</Link></li>
+          {menuItems.map((item) => (
+            <li key={item.path}>
+              <Link 
+                to={item.path} 
+                onClick={() => isMobile && setSidebarOpen(false)} 
+                className={`text-md pl-7 p-3 hover:bg-[#129bd3] flex gap-5 rounded transition-all duration-300 ease-in-out ${
+                  location.pathname === item.path || (item.path === '/dashboard' && location.pathname === '/') 
+                    ? 'bg-[#129bd3]' 
+                    : ''
+                }`}
+              >
+                <img src={item.icon} alt="" />
+                {item.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
       <div className={`flex-1 flex flex-col ${isMobile && sidebarOpen ? 'blur-sm' : ''}`}>
-        <header className=" pb-3 pr-5 border-b border-gray-200 flex justify-end items-center">
+        <header className=" pb-3 pr-5 p-3 border-b border-gray-200 flex justify-end items-center">
           <div className="flex items-center mr-10">
             {/* <span className="text-gray-600">Welcome, {user?.email}</span> */}
             <button>
@@ -86,7 +105,8 @@ const AdminLayout = ({ children }) => {
             </button>
             {
               isprofileopen && <div className='absolute top-25 right-10 bg-white p-5 rounded-lg shadow-lg'>
-                <p className='text-gray-600'> {user?.email}</p>
+                <p className='text-gray-600'>{user?.admin_name}</p>
+                <p className='text-gray-600 text-sm'>{user?.email}</p>
                 <button onClick={logout} className="mt-2 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600">Logout</button>
               </div>
             }

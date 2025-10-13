@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Mail, Lock, Eye, EyeOff, Loader2, Scissors } from 'lucide-react';
+import { adminLogin } from '../../apiServeces/apiServices';
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [credentials, setCredentials] = useState({ email:'',password:''});
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
@@ -12,14 +13,16 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // TODO: Replace with actual API call
-    setTimeout(() => {
-      if (credentials.email && credentials.password) {
-        const mockToken = 'mock-access-token-' + Date.now();
-        login({ email: credentials.email, role: 'admin' }, mockToken);
+    try {
+      const response = await adminLogin(credentials.email, credentials.password);
+      if (response.token && response.admin) {
+        login(response.admin, response.token);
       }
+    } catch (error) {
+      console.log(error);
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (

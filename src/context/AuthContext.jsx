@@ -18,23 +18,23 @@ export const AuthProvider = ({ children }) => {
     const accessToken = localStorage.getItem('accessToken');
     if (accessToken) {
       setIsAuthenticated(true);
-      const userData = localStorage.getItem('user');
-      if (userData) {
-        setUser(JSON.parse(userData));
+      const adminData = localStorage.getItem('admin');
+      if (adminData) {
+        setUser(JSON.parse(adminData));
       }
     }
   }, []);
 
-  const login = (userData, token) => {
+  const login = (adminData, token) => {
     localStorage.setItem('accessToken', token);
-    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('admin', JSON.stringify(adminData));
     setIsAuthenticated(true);
-    setUser(userData);
+    setUser(adminData);
   };
 
   const logout = () => {
     localStorage.removeItem('accessToken');
-    localStorage.removeItem('user');
+    localStorage.removeItem('admin');
     setIsAuthenticated(false);
     setUser(null);
   };

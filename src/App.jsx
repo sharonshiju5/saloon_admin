@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
 import { AuthProvider } from './context/AuthContext';
 import { BrowserRouter } from 'react-router-dom';
-import AppContent from './AppContent';
 import Loader from './components/Layout/Loader';
+import AppContent from './routes/AppContent';
 
 function App() {
   return (
