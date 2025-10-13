@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google-cloud/local-auth": "^3.0.1",
     "@tailwindcss/vite": "^4.1.14",
     "axios": "^1.12.2",
+    "google-one-tap": "^1.0.6",
+    "googleapis": "^162.0.0",
     "lucide-react": "^0.545.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
