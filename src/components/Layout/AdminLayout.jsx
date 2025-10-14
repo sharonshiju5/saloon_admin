@@ -5,7 +5,11 @@ import dashboard from "../../assets/AdminAside/dashboard.svg"
 import notification from "../../assets/Header/bell-notif.png"
 import profil from "../../assets/Header/profil.png"
 import { useState, useEffect } from 'react';
-// import dashboard from "../../assets/AdminAside/dashboard.svg"
+import users from "../../assets/AdminAside/users.png"
+
+// import users from "../../assets/AdminAside/users.png"
+// import users from "../../assets/AdminAside/users.png"
+// import users from "../../assets/AdminAside/dashboard.svg"
 
 const AdminLayout = ({ children }) => {
   const { user, logout } = useAuth();
@@ -17,7 +21,7 @@ const AdminLayout = ({ children }) => {
   const menuItems = [
     { path: '/dashboard', label: 'Dashboard', icon: dashboard },
     { path: '/branches', label: 'Branches', icon: dashboard },
-    { path: '/staff', label: 'Staffs', icon: dashboard },
+    { path: '/staff', label: 'Staffs', icon: users },
     { path: '/staff/payment', label: 'Staff Payment', icon: dashboard },
     { path: '/billing', label: 'Subscription & Billing', icon: dashboard },
     { path: '/settings', label: 'Settings', icon: dashboard }
@@ -86,7 +90,7 @@ const AdminLayout = ({ children }) => {
                     : ''
                 }`}
               >
-                <img src={item.icon} alt="" />
+                <img className='w-5' src={item.icon} alt="" />
                 {item.label}
               </Link>
             </li>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // export const basicURL = "" ;
-export const basicURL = "http://192.168.29.226:6134/salonadmin" ;
+export const basicURL = "http://192.168.29.226:3060/salonadmin" ;
 
 export const  axiosConfig = axios.create({
     baseURL:basicURL,
