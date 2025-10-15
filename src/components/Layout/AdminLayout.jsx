@@ -1,15 +1,17 @@
 import { useAuth } from '../../context/AuthContext';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import logo from "../../assets/AdminAside/logo.png"
-import dashboard from "../../assets/AdminAside/dashboard.svg"
+import dashboard from "../../assets/AdminAside/dashboard.png"
 import notification from "../../assets/Header/bell-notif.png"
 import profil from "../../assets/Header/profil.png"
 import { useState, useEffect } from 'react';
 import users from "../../assets/AdminAside/users.png"
+import shop from "../../assets/AdminAside/shop.png"
+import vector from "../../assets/AdminAside/vector.png"
+import group from "../../assets/AdminAside/group.png"
+import setting from "../../assets/AdminAside/setting.png"
 
-// import users from "../../assets/AdminAside/users.png"
-// import users from "../../assets/AdminAside/users.png"
-// import users from "../../assets/AdminAside/dashboard.svg"
+// import group from "../../assets/AdminAside/group.png"
 
 const AdminLayout = ({ children }) => {
   const { user, logout } = useAuth();
@@ -22,9 +24,10 @@ const AdminLayout = ({ children }) => {
     { path: '/dashboard', label: 'Dashboard', icon: dashboard },
     { path: '/branches', label: 'Branches', icon: dashboard },
     { path: '/staff', label: 'Staffs', icon: users },
-    { path: '/staff/payment', label: 'Staff Payment', icon: dashboard },
-    { path: '/billing', label: 'Subscription & Billing', icon: dashboard },
-    { path: '/settings', label: 'Settings', icon: dashboard }
+    { path: '/staff/payment', label: 'Staff Payment', icon: shop },
+    { path: '/report', label: 'Report', icon: vector },
+    { path: '/billing', label: 'Subscription & Billing', icon: group },
+    { path: '/settings', label: 'Settings', icon: setting }
   ];
 
   useEffect(() => {
@@ -90,7 +93,7 @@ const AdminLayout = ({ children }) => {
                     : ''
                 }`}
               >
-                <img className='w-5' src={item.icon} alt="" />
+                <img className='w-5 h-5' src={item.icon} alt="" />
                 {item.label}
               </Link>
             </li>
@@ -99,11 +102,11 @@ const AdminLayout = ({ children }) => {
       </nav>
       <div className={`flex-1 flex flex-col ${isMobile && sidebarOpen ? 'blur-sm' : ''}`}>
         <header className=" pb-3 pr-5 p-3 border-b border-gray-200 flex justify-end items-center">
-          <div className="flex items-center mr-10">
-            {/* <span className="text-gray-600">Welcome, {user?.email}</span> */}
-            <button>
+          <div className="flex items-center gap-7 justify-between  mr-10">
+            <span className="text-gray-600">Welcome, {user?.email}</span>
+            {/* <button>
               <img src={notification} alt="" />
-            </button>
+            </button> */}
             <button onClick={() => { setProfileopen(!isprofileopen) }}>
               <img className='w-10' src={profil} alt="" />
             </button>

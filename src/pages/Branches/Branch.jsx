@@ -1,6 +1,6 @@
 import { Search, Eye, EyeOff, X } from 'lucide-react'
 import { useEffect, useState } from "react"
-import { addBranch, deleteBranch, getBranch, updateBranch } from "../../apiServeces/apiServices"
+import { addBranch, deleteBranch, getBranch, updateBranch, updatePassword } from "../../apiServeces/apiServices"
 import toast, { Toaster } from 'react-hot-toast'
 import filter from "../../assets/Branch/filter-lines.png"
 import addbtn from "../../assets/Branch/plus_add_outline_24px.png"
@@ -103,7 +103,7 @@ export default function Branch() {
 
     async function handleUpdatePassword() {
         try {
-            const response = await updateBranch(branchData._id, newpassword)
+            const response = await updatePassword(branchData._id, newpassword)
             if (response.success) {
                 toast.success('password updated successfully!')
             }

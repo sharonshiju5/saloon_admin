@@ -7,6 +7,9 @@ import Dashboard from '../pages/Dashboard/Dashboard';
 import PageNotFound from '../pages/404/PageNotFound';
 import Branch from '../pages/Branches/Branch';
 import STaffData from '../pages/staaff/Staff';
+import StaffPayment from '../pages/staaff/StaffPayment';
+import Setting from '../pages/setting/setting';
+import Reports from '../pages/report/Report';
 
 const AppContent = () => {
   return (
@@ -19,9 +22,10 @@ const AppContent = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/branches" element={<Branch />} />
         <Route path="/staff" element={<STaffData />} />
-        <Route path="/staff/payment" element={<Dashboard />} />
+        <Route path="/staff/payment" element={<StaffPayment />} />
+        <Route path="/report" element={<Reports />} />
         <Route path="/billing" element={<Dashboard />} />
-        <Route path="/settings" element={<Dashboard />} />
+        <Route path="/settings" element={<Setting />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
