@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-// export const basicURL = "https://aurabackendadmin.seclob.com/" ;
+// export const basicURL = "import.meta.env.VITE_API_URL" ;
 export const basicURL = "http://192.168.29.226:3060/salonadmin" ;
 
 export const  axiosConfig = axios.create({
