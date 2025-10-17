@@ -18,6 +18,7 @@ const AppContent = () => {
       
       {/* Admin Routes */}
       <Route element={<AdminProtectedRoute component={AdminLayout} />}>
+      {/* <Route element={<AdminLayout/>} > */}
         <Route path="/" element={<Dashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/branches" element={<Branch />} />

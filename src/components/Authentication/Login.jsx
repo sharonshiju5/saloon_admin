@@ -15,8 +15,8 @@ const Login = () => {
     
     try {
       const response = await adminLogin(credentials.email, credentials.password);
-      if (response.token && response.admin) {
-        login(response.admin, response.token);
+      if (response.accessToken) {
+        login(response);
       }
     } catch (error) {
       console.log(error);

@@ -25,8 +25,17 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = (adminData, token) => {
-    localStorage.setItem('accessToken', token);
+  const login = (responseData) => {
+    localStorage.setItem('accessToken', responseData.accessToken);
+    localStorage.setItem('refreshToken', responseData.refreshToken);
+    localStorage.setItem('adminId', responseData.userId);
+    const adminData = {
+      admin_name: responseData.name,
+      email: responseData.email,
+      phone: responseData.phone,
+      unique_id: responseData.unique_id,
+      userId: responseData.userId
+    };
     localStorage.setItem('admin', JSON.stringify(adminData));
     setIsAuthenticated(true);
     setUser(adminData);
@@ -34,6 +43,8 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('adminId');
     localStorage.removeItem('admin');
     setIsAuthenticated(false);
     setUser(null);

@@ -100,10 +100,10 @@ const AdminLayout = ({ children }) => {
           ))}
         </ul>
       </nav>
-      <div className={`flex-1 flex flex-col ${isMobile && sidebarOpen ? 'blur-sm' : ''}`}>
+      <div className={`w-3/5 flex-1 flex flex-col ${isMobile && sidebarOpen ? 'blur-sm' : ''}`}>
         <header className=" pb-3 pr-5 p-3 border-b border-gray-200 flex justify-end items-center">
           <div className="flex items-center gap-7 justify-between  mr-10">
-            <span className="text-gray-600">Welcome, {user?.email}</span>
+            <span className="text-gray-600">Welcome, {user?.admin_name || 'Admin'}</span>
             {/* <button>
               <img src={notification} alt="" />
             </button> */}
@@ -112,8 +112,8 @@ const AdminLayout = ({ children }) => {
             </button>
             {
               isprofileopen && <div className='absolute top-25 right-10 bg-white p-5 rounded-lg shadow-lg'>
-                <p className='text-gray-600'>{user?.admin_name}</p>
-                <p className='text-gray-600 text-sm'>{user?.email}</p>
+                {/* <p className='text-gray-600'>{user}</p> */}
+                <p className='text-gray-600 text-sm'>{user?.admin_name || 'Admin'}</p>
                 <button onClick={logout} className="mt-2 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600">Logout</button>
               </div>
             }

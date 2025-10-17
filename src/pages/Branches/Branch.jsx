@@ -23,9 +23,7 @@ export default function Branch() {
     const [editPassword, seteditPassword] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
     const [branchToDelete, setBranchToDelete] = useState(null)
-    const adminData = JSON.parse(localStorage.getItem('admin'));
-    const adminId = adminData?.admin_id;
-    localStorage.setItem('adminId', adminId)
+    const adminId = localStorage.getItem('adminId')
 
     const [branchData, setBranchData] = useState({
         branch_name: "",
