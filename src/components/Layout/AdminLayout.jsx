@@ -101,7 +101,7 @@ const AdminLayout = ({ children }) => {
         </ul>
       </nav>
       <div className={`w-3/5 flex-1 flex flex-col ${isMobile && sidebarOpen ? 'blur-sm' : ''}`}>
-        <header className=" pb-3 pr-5 p-3 border-b border-gray-200 flex justify-end items-center">
+        <header className=" pb-3 pr-2 p-3 border-b border-gray-200 flex justify-end items-center">
           <div className="flex items-center gap-7 justify-between  mr-10">
             <span className="text-gray-600">Welcome, {user?.admin_name || 'Admin'}</span>
             {/* <button>

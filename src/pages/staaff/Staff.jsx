@@ -171,7 +171,7 @@ export default function STaffData() {
         <div className="w-full  scroll-smooth overflow-auto" style={{ scrollBehavior: 'smooth', WebkitOverflowScrolling: 'touch' }}>
             <Toaster position="top-right" />
 
-            <div className="flex flex-col sm:flex-row sm:justify-between gap-4 mb-0 pl-7">
+            <div className="flex flex-col sm:flex-row sm:justify-between gap-4 mb-5">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                     <div className="relative w-full sm:w-auto">
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -194,9 +194,9 @@ export default function STaffData() {
                     </button>
                 </div>
             </div>
-            <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  2xl:grid-cols-4 3xl:grid-cols-5 justify-center gap-7 p-7      sm:gap-x-8 md:gap-x-18 will-change-scroll">
+            <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  2xl:grid-cols-4 3xl:grid-cols-5 justify-center gap-3     sm:gap-x-8 md:gap-x-18 will-change-scroll">
                 {staffData.map((branch, index) => (
-                    <div key={index} className="h-[253px]  bg-[#187A85] rounded-xl p-4 flex flex-col justify-between transition-transform duration-200 hover:scale-105">
+                    <div key={index} className="h-[253px] mt-5  bg-[#187A85] rounded-xl p-4 flex flex-col justify-between transition-transform duration-200 hover:scale-105">
                         <div className="text-center">
                             <img className="rounded-full w-30 h-30 mx-auto mb-2 object-cover" src="https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg" alt="" />
                             <span className="text-white font-medium text-lg">{branch.staff_name}</span>
@@ -407,7 +407,7 @@ export default function STaffData() {
 
                                         ))}
                                         {/* <option value="main">Main Branch</option>
-                {/* {staffData.map((branch, index) => ( */}
+                                            {/* {staffData.map((branch, index) => ( 
                                         <option value="downtown">Downtown Branch</option> */}
                                     </select>
                                 </div>
