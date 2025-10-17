@@ -126,7 +126,7 @@ export default function STaffData() {
             name: staff.staff_name,
             branch: staff.branch_id?._id || '',
             salaryType: staff.salary_type,
-            commission: staff.commission || '',
+            commission: staff.commission_rate || staff.fixed_salary || '',
             email: staff.email,
             mobile: staff.mobile,
             enableLogin: staff.enableLogin || true,
@@ -143,7 +143,9 @@ export default function STaffData() {
             const salaryData = staffForm.salaryType === 'commission'
                 ? { commission_rate: staffForm.commission }
                 : { fixed_salary: staffForm.commission };
-            const response = await updateStaff(editingStaff._id, staffForm.branch, staffForm.name, dummyImageUrl, staffForm.mobile, staffForm.salaryType, staffForm.email, salaryData);
+            // Use existing branch if no new branch is selected
+            const branchToUpdate = staffForm.branch || editingStaff.branch_id?._id;
+            const response = await updateStaff(editingStaff._id, branchToUpdate, staffForm.name, dummyImageUrl, staffForm.mobile, staffForm.salaryType, staffForm.email, salaryData);
             if (response) {
                 setAddStaffModal(false);
                 setEditingStaff(null);
